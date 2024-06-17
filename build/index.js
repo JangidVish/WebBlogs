@@ -15,7 +15,7 @@ const { checkForAuthenticationCookie, fetchUser } = require('../middleware/auth.
 const app = express()
 
 
-connectToMongoDB(process.env.MONGODB_URL).then(()=>{
+connectToMongoDB("mongodb+srv://vishaljangid2004as:Vishal@vishal.tlkuemw.mongodb.net/?retryWrites=true&w=majority&appName=Vishal").then(()=>{
     console.log("MongoDb connected");
 })
 
