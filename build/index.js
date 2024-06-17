@@ -2,16 +2,16 @@ require('dotenv').config()
 const path = require('path')
 const cookieParser = require('cookie-parser');
 const express = require('express')
-const {connectToMongoDB} = require('./connection')
+const {connectToMongoDB} = require('../connection')
 
 
-const userRoute = require('./routes/user.router');
-const blogRoute = require('./routes/blog.router');
-const commentRoute = require('./routes/comment.router');
-const User = require('./models/user');
+const userRoute = require('../routes/user.router');
+const blogRoute = require('../routes/blog.router');
+const commentRoute = require('../routes/comment.router');
+const User = require('../models/user');
 
 
-const { checkForAuthenticationCookie, fetchUser } = require('./middleware/auth.middleware');
+const { checkForAuthenticationCookie, fetchUser } = require('../middleware/auth.middleware');
 const app = express()
 
 
@@ -28,7 +28,7 @@ app.use(checkForAuthenticationCookie("token"))
 app.use(express.static(path.resolve("./public")))
 
 
-const Blog = require('./models/blog')
+const Blog = require('../models/blog')
 
 app.get('/',async (req,res)=>{
     const allBlogs = await Blog.find({});
